@@ -1,10 +1,13 @@
+////Agregar IIBB (ingresos brutos 3%) al calculo del ticket)
+
+#include <cstdio> 
 #include <iostream>
-#include <cstdio>
 
 using namespace std;
 
 const int MAX_PRODUCTOS = 100;
 const float IVA = 0.21f;
+const float IIBB = 0.03f;
 
 struct Producto {
     int codigo;
@@ -53,13 +56,20 @@ int main() {
                productos[i].cantidad, 
                subtotal);
     }
-
+    //Agregar IIBB (ingresos brutos 3%) al calculo del ticket
     float iva = total * IVA;
+    float iibb = total * IIBB;
     float totalConIva = total + iva;
+    float totalConIIBB = total + iibb;
+    float totalFinal = total + iva + iibb;
 
     printf("\nSubtotal: %.2f\n", total);
     printf("IVA 21%% : %.2f\n", iva);
-    printf("TOTAL   : %.2f\n", totalConIva);
+    printf("IIBB 3%%   : %.2f\n", iibb);
+    printf("TOTAL con IIBB : %.2f\n", iibb);
+    printf("TOTAL con IVA  : %.2f\n", iva);
+    printf("TOTAL FINAL    : %.2f\n", totalFinal);
 
+    system("pause");
     return 0;
 }
